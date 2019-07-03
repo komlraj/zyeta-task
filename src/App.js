@@ -1,14 +1,17 @@
 import React from "react";
 import "./App.css";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
+import Button from "@material-ui/core/Button";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
+  const top = 48;
   const left = 50 + rand();
 
   return {
@@ -30,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SimpleModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
@@ -41,6 +44,8 @@ export default function SimpleModal() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleBooking = () => {};
   const classes = useStyles();
 
   return (
@@ -72,7 +77,7 @@ export default function SimpleModal() {
                 src="https://media.architecturaldigest.com/photos/5a4fdfdfb886ab70f8b4b496/3:2/w_1920,h_1280,c_limit/modsy-no-sofa-living-room-04.jpg"
                 alt=""
               />
-              <div className="image-overlay img-2">
+              <div className="image-overlay img-2" onClick={handleOpen}>
                 <p>The Oval</p>
                 <p>3rd floor</p>
               </div>
@@ -84,7 +89,7 @@ export default function SimpleModal() {
               src="https://cdn.wynnlasvegas.com/-/media/images/wynn-las-vegas/room-and-suites/rooms-and-suites-teaser-card-images/125_encore_parlor-suite_living_room_russell-macmasters.ashx"
               alt=""
             />
-            <div className="image-overlay">
+            <div className="image-overlay" onClick={handleOpen}>
               <p>The Oval</p>
               <p>3rd floor</p>
             </div>
@@ -104,7 +109,6 @@ export default function SimpleModal() {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={open}
-        onClose={handleClose}
       >
         <div className="modal" style={modalStyle}>
           <button className="close-modal" onClick={handleClose}>
@@ -134,7 +138,7 @@ export default function SimpleModal() {
               <p>The oval is on the 3rd floor of HSR @gethr.</p>
             </div>
           </div>
-          <div>
+          <div className="booking-footer" onClick={handleBooking}>
             <p>Book</p>
           </div>
         </div>

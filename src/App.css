@@ -53,6 +53,11 @@
 }
 .logo {
   padding: 15px;
+  cursor: pointer;
+}
+.logo:hover {
+  background: rgb(212, 212, 184);
+  border-radius: 50%;
 }
 .active {
   background: yellow;
@@ -60,8 +65,10 @@
 }
 
 .modal {
+  background: white;
   position: absolute;
   z-index: 4;
+  outline: none;
 }
 
 
@@ -69,4 +76,13 @@
   cursor: pointer;
   padding: 10px;
 }
-
+.booking-footer {
+  padding: 10px;
+  margin-top: 10px;
+  background: yellow;
+  text-align: center;
+  cursor: pointer;
+}
+.booking-footer:hover {
+  background: rgb(199, 199, 21);
+}
